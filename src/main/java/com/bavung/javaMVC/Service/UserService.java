@@ -3,36 +3,51 @@ package com.bavung.javaMVC.Service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bavung.javaMVC.Entities.UserEntity;
+import com.bavung.javaMVC.Entities.Role;
+import com.bavung.javaMVC.Entities.User;
+import com.bavung.javaMVC.Repository.RoleRepository;
 import com.bavung.javaMVC.Repository.UserRepository;
 
 @Service
 public class UserService {
-    @Autowired
+
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
+    public UserService (UserRepository userRepository, RoleRepository roleRepository)
+    {
+         this.userRepository = userRepository;
+         this.roleRepository = roleRepository;
+    }
+
     public String sayhello()
     {
         return "hello from service";
     }  
-    public void handleSaveUser(UserEntity userEntity)
+    public void handleSaveUser(User userEntity)
     {
-        userRepository.save(userEntity);
+        this.userRepository.save(userEntity);
     }
-    public List<UserEntity> findAll()
+    public List<User> findAll()
     {
-        return userRepository.findAll();
+        return this.userRepository.findAll();
     }
 
-    public Optional<UserEntity> findById(Long id)
+    public Optional<User> findById(Long id)
     {
-        return userRepository.findById(id);
+        return this.userRepository.findById(id);
     }
     public void deleteUById(long id)
     {
-        userRepository.deleteById(id);
+        this.userRepository.deleteById(id);
     }
+
+    public Role findRoleByName(String name)
+    {
+        return this.roleRepository.findByName(name);
+    }
+
+
 
 }

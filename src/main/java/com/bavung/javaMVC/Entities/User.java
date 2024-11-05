@@ -1,14 +1,19 @@
 package com.bavung.javaMVC.Entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "User")
-public class UserEntity {
+public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +24,15 @@ public class UserEntity {
     private String address;
     private String phoneNumber;
 
-    public UserEntity() {
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    @OneToMany(mappedBy = "user" )
+    private List<Orders> oders;
+    
+    private String avatar;
+    public User() {
     }
     public Long getId() {
         return id;
@@ -71,6 +84,32 @@ public class UserEntity {
         sb.append('}');
         return sb.toString();
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public List<Orders> getOders() {
+        return oders;
+    }
+
+    public void setOders(List<Orders> oders) {
+        this.oders = oders;
+    }
+
+   
     
 }
 
