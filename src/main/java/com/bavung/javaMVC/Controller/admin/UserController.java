@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bavung.javaMVC.Entities.User;
 import com.bavung.javaMVC.Service.UpLoadFileService;
 import com.bavung.javaMVC.Service.UserService;
+
+import jakarta.validation.Valid;
 @Controller
 
 public class UserController {
@@ -49,17 +52,26 @@ public class UserController {
     }
     
     @RequestMapping(value = "/admin/user/create", method= RequestMethod.POST)
-    public String HandleCreateNewUser(  @ModelAttribute("user") User user ,
-                                        @RequestParam("file") MultipartFile file,
-                                        BindingResult result) {
+    public String HandleCreateNewUser(  @ModelAttribute("user") @Valid User user ,
+                                        BindingResult userbindingResult,
+                                        @RequestParam("file") MultipartFile file) {
 
+        List<FieldError> errors = userbindingResult.getFieldErrors();
+        for (FieldError error : errors ) {
+            System.out.println (error.getField() + " - " + error.getDefaultMessage());
+        }
+
+        if(userbindingResult.hasErrors())
+        {
+            return "admin/user/create";
+        }
         String avatar = this.upLoadFileService.hanldeUpLoadFile(file, "avatar");
         user.setRole(this.userService.findRoleByName(user.getRole().getName()));
         user.setAvatar(avatar);
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
         user.setPassword(hashPassword);
 
-         this.userService.handleSaveUser(user);
+        this.userService.handleSaveUser(user);
         return "redirect:/admin/user";
     }
 

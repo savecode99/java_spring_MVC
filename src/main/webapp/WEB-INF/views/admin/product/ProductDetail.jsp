@@ -12,6 +12,8 @@
         <title>Welcome my shop</title>
         <link href="/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+        
     </head>
     <body class="sb-nav-fixed">
         
@@ -25,9 +27,9 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Manage User</h1>
+                        <h1 class="mt-4">Manage Product</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active"></li>
                         </ol>
                         <div>
                             <div class ="container mt-5">
@@ -35,31 +37,32 @@
                                     <div class = "col-12 mx-auto">
                         
                                         <div class="d-flex justify-content-between">
-                                            <h1>UserDetail with ID = ${id}</h1>
+                                            <h1>Product with ID = ${id}</h1>
                                         </div>
                                         <div class="card" style="width: 70%;">
                                             <div class="card-header">
-                                                <h2>Infomation</h2>
+                                                <h2>Infomation Product</h2>
                                             </div>
-                                        <div class="row g-0">
+                                        <div class="row g-0 " >
                                             
                                             
                                             <div class="col-md-8">
                                                 <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">ID: ${userDetail.id} </li>
-                                                <li class="list-group-item">FullName: ${userDetail.fullName}</li>
-                                                <li class="list-group-item">Address: ${userDetail.address}</li>
-                                                <li class="list-group-item">PhoneNumber: ${userDetail.phoneNumber}</li>
+                                                <li class="list-group-item">ID: ${product.id} </li>
+                                                <li class="list-group-item">Name: ${product.name}</li>
+                                                <li class="list-group-item">Price: ${product.price}</li>
+                                                <li class="list-group-item">Factory: ${product.factory}</li>
+                                                <li class="list-group-item">Quantity: ${product.quantity}</li>
                                                 </ul>
 
                                             </div>
                                             
                                             <div class="col-md-4 text-center my-auto">
-                                                <img src="../../../images/avatar/${userDetail.avatar}" alt="User Avatar" class="card-img-top" style="max-width: 150px; margin: 10px auto;">
+                                                <img src="../../../images/product/${product.image}" alt="Image Product" class="card-img-top" style="max-width: 150px; margin: 10px auto;">
                                             </div>
                                         </div>
                                         </div>
-                                            <a href="/admin/user" class="btn btn-success mt-3">Back</a>
+                                            <a href="/admin/product" class="btn btn-success mt-3">Back</a>
                                         
                                     </div>
                                 </div>

@@ -25,12 +25,59 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Manage Products</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active"></li>
                         </ol>
                         <div>
-                            my product
+                            <div class = "">
+                                <div class = "row">
+                                        <div class = "col-12 mx-auto">
+                        
+                                            <div class="d-flex justify-content-between">
+                                                <h3>Table Product</h3>
+                                                <a href="/admin/product/create"><button class = "btn btn-primary">Add New Product</button></a>
+                                            </div>
+                        
+                                            <table class="table table-bordered " style="text-align: center;">
+                                                <thead >
+                                                  <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Factory</th>
+                                                    <th scope="col">Target</th>
+                                                    <th scope="col">Action</th>
+                                                  </tr>
+                                                </thead>
+                        
+                                                <tbody >
+                                                    <c:forEach var="product" items="${listProduct}" >
+                                                        <tr>
+                                                            <td>${product.id}</td>
+                                                            <td>${product.name}</td>
+                                                            <td>${product.price}</td>
+                                                            <td>${product.factory}</td>
+                                                            <td>${product.target}</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="/admin/product/show/${product.id}" class = "btn btn-primary" >View</a>
+                                                                    <a href="/admin/product/update/${product.id}" class = "btn btn-warning" >Update</a>
+                                                                    <!-- <a href="/admin/product/delete/${product.id}" class = "btn btn-danger" >Delete</a> -->
+                                                                    <form action="/admin/product/delete/${product.id}" method="post" onsubmit="return confirmDelete()" class="d-inline">
+                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    </form>
+                                                                    
+                                                                </div>
+                                                                
+                                                            </td>
+                                                          </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>
@@ -41,5 +88,10 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
+        <script>
+            function confirmDelete() {
+                return confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
+            }
+        </script>
     </body>
 </html>

@@ -9,6 +9,7 @@ import com.bavung.javaMVC.Entities.Role;
 import com.bavung.javaMVC.Entities.User;
 import com.bavung.javaMVC.Repository.RoleRepository;
 import com.bavung.javaMVC.Repository.UserRepository;
+import com.bavung.javaMVC.model.RegisterDTO;
 
 @Service
 public class UserService {
@@ -48,6 +49,26 @@ public class UserService {
         return this.roleRepository.findByName(name);
     }
 
+    public boolean checkExistEmail(String email)
+    {
+        return this.userRepository.existsByEmail(email);
+    }
+
+    public User RegisterDTOtoUser(RegisterDTO registerDTO)
+    {
+        User user = new User();
+        user.setFullName(registerDTO.getFirstName()+" "+registerDTO.getLastName());
+        //user.setAddress(registerDTO.get);
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(registerDTO.getPassWord());
+        return user;
+
+    }
+
+    public User getUserByEmai(String email)
+    {
+        return this.userRepository.findByEmail(email);
+    }
 
 
 }

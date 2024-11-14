@@ -1,23 +1,38 @@
 package com.bavung.javaMVC.Entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "product")
 
 public class product {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Vui lòng điền tên sản phẩm")
+    @NotBlank(message = "Tên sản phẩm không được để trống")
     private String name;
-    private Long Price;
+
+    @NotNull( message="vui lòng nhập giá")
+    @Min(value = 0 , message="Giá phải lớn hơn 0")
+    private Double price;
+
     private String image;
+     @Column(columnDefinition = "MEDIUMTEXT")
     private String detailDesc;
     private String shortDesc;
+
+    @NotNull( message="vui lòng nhập số lượng")
+    @Min(value = 1 , message="Số lượng phải lớn hơn hoặc bằng 1")
     private Long quantity;
     private Long sold;
     private String factory;
@@ -39,12 +54,12 @@ public class product {
         this.name = name;
     }
 
-    public Long getPrice() {
-        return Price;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPrice(Long Price) {
-        this.Price = Price;
+    public void setPrice(Double Price) {
+        this.price = Price;
     }
 
     public String getImage() {
@@ -101,6 +116,24 @@ public class product {
 
     public void setTarget(String target) {
         this.target = target;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("product{");
+        sb.append("id=").append(id);
+        sb.append(", name=").append(name);
+        sb.append(", Price=").append(price);
+        sb.append(", image=").append(image);
+        sb.append(", detailDesc=").append(detailDesc);
+        sb.append(", shortDesc=").append(shortDesc);
+        sb.append(", quantity=").append(quantity);
+        sb.append(", sold=").append(sold);
+        sb.append(", factory=").append(factory);
+        sb.append(", target=").append(target);
+        sb.append('}');
+        return sb.toString();
     }
 
 

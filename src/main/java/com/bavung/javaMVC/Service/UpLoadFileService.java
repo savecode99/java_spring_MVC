@@ -19,7 +19,11 @@ public class UpLoadFileService {
     }
     public String hanldeUpLoadFile(MultipartFile file, String targetFile)
     {
-         try {
+        if(file.isEmpty())
+        {
+            return null;
+        }
+        try {
             byte[] bytes = file.getBytes();
             String a = this.servletContext.getRealPath("");
             String rootPath = this.servletContext.getRealPath("/resources/images");
@@ -30,7 +34,6 @@ public class UpLoadFileService {
             // Create the file on server
             avatar = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             File serverFile = new File(dir.getAbsolutePath() + File.separator + avatar);
-
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 
             stream.write(bytes);

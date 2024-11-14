@@ -40,21 +40,23 @@
                                             </div>
                         
                                             <table class="table table-bordered">
-                                                <thead>
-                                                  <tr>
+                                                <thead >
+                                                  <tr style="text-align: center;">
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">FullName</th>
+                                                    <th scope="col">Role</th>
                                                     <th scope="col">Action</th>
                                                   </tr>
                                                 </thead>
                         
                                                 <tbody>
                                                     <c:forEach var="user" items="${listUser}" >
-                                                        <tr>
+                                                        <tr style="text-align: center;">
                                                             <td>${user.id}</td>
                                                             <td>${user.email}</td>
                                                             <td>${user.fullName}</td>
+                                                            <td>${user.role.name}</td>
                                                             <td>
                                                                 <div class="">
                                                                     <a href="/admin/user/show/${user.id}" class = "btn btn-primary" >View</a>

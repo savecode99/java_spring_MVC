@@ -16,14 +16,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
     $(document).ready(() => {
-const avatarFile = $("#avatarFile");
-avatarFile.change(function (e) {
-const imgURL = URL.createObjectURL(e.target.files[0]);
-$("#avatarPreview").attr("src", imgURL);
-$("#avatarPreview").css({ "display": "block" });
-});
-});
-</script>
+        const avatarFile = $("#avatarFile");
+        
+        
+        avatarFile.change(function (e) {
+        const imgURL = URL.createObjectURL(e.target.files[0]);
+        $("#avatarPreview").attr("src", imgURL);
+        $("#avatarPreview").css({ "display": "block" });
+        });
+    });
+    </script>
     </head>
     <body class="sb-nav-fixed">
         
@@ -51,27 +53,39 @@ $("#avatarPreview").css({ "display": "block" });
                                             enctype="multipart/form-data"
                                             >
                                                 <div class="mb-3 col-12 col-md-6">
-                                                    <label for="InputEmail" class="form-label">Email: </label>
-                                                    <form:input type="email" class="form-control" path = "email" />
+                                                    <label class="form-label">Email: </label>
+                                                    <c:set var="errorEmail">
+                                                        <form:errors path="email" cssClass = "invalid-feedback"/>
+                                                    </c:set>
+                                                    <form:input type="email" class="form-control ${not empty errorEmail ?'is-invalid': ''}" path = "email" />
+                                                    ${errorEmail}
                                                 </div>
                                           
                                                 <div class="mb-3 col-12 col-md-6">
-                                                    <label for="InputPassword" class="form-label">Password: </label>
-                                                    <form:input type="password" class="form-control" path = "password" />
+                                                    <labelclass="form-label">Password: </label>
+                                                    <c:set var="errorPassword">
+                                                        <form:errors path="password" cssClass = "invalid-feedback"/>
+                                                    </c:set>
+                                                    <form:input type="password" class="form-control ${not empty errorPassword ?'is-invalid': ''}" path = "password" />
+                                                    ${errorPassword}
                                                 </div>
                                           
                                                 <div class="mb-3 col-12 col-md-6">                                                
-                                                    <label for="InputPhoneNumber" class="form-label">Phone Number: </label>
+                                                    <label class="form-label">Phone Number: </label>
                                                     <form:input type="text" class="form-control" path = "phoneNumber" />
                                                 </div>
                                           
                                                 <div class="mb-3 col-12 col-md-6">
-                                                    <label for="InputFullName" class="form-label">FullName: </label>
-                                                    <form:input type="text" class="form-control" path = "fullName"  />
+                                                    <label class="form-label">FullName: </label>
+                                                    <c:set  var="errorFullName">
+                                                        <form:errors path="fullName" cssClass = "invalid-feedback"/>
+                                                    </c:set>
+                                                    <form:input type="text" class="form-control  ${not empty errorFullName ?'is-invalid':''}" path = "fullName"  />
+                                                    ${errorFullName}
                                                 </div>
                                           
                                                 <div class="mb-3 col-12">
-                                                    <label for="InputAddress" class="form-label">Address: </label>
+                                                    <label class="form-label">Address: </label>
                                                     <form:input type="text" class="form-control" path = "address" />
                                                 </div>
 
@@ -93,6 +107,7 @@ $("#avatarPreview").css({ "display": "block" });
                                                     <img style="max-height: 250px; display: none;" alt="avatar preview"
                                                         id="avatarPreview" />
                                                 </div>
+
                                                 <div class="col-12 mb-5">
                                                     <button type="submit" class="btn btn-primary">Create</button>
                                                 </div>
@@ -111,6 +126,6 @@ $("#avatarPreview").css({ "display": "block" });
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../js/scripts.js"></script>
+        <script src="js/scripts.js"></script>
     </body>
 </html>
