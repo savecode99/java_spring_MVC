@@ -20,8 +20,8 @@ public class CustomUserDetailsService implements UserDetailsService{
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO Auto-generated method stub
-        com.bavung.javaMVC.Entities.User user = this.userService.getUserByEmai(username);
+        
+        com.bavung.javaMVC.Entities.User user = this.userService.getUserByEmail(username);
         if(user == null)
         {
             throw new UsernameNotFoundException("Sai tên đăng nhập hoặc mật khẩu");
@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService{
        return new User(
                 user.getEmail(),
                 user.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().getName())));
     }
     
 }

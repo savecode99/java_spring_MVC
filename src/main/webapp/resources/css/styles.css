@@ -3217,7 +3217,7 @@ textarea.form-control-lg {
 .dropdown-toggle {
   white-space: nowrap;
 }
-.dropdown-toggle::after {
+. {
   display: inline-block;
   margin-left: 0.255em;
   vertical-align: 0.255em;
@@ -3235,12 +3235,12 @@ textarea.form-control-lg {
   --bs-dropdown-zindex: 1000;
   --bs-dropdown-min-width: 10rem;
   --bs-dropdown-padding-x: 0;
-  --bs-dropdown-padding-y: 0.5rem;
-  --bs-dropdown-spacer: 0.125rem;
-  --bs-dropdown-font-size: 1rem;
-  --bs-dropdown-color: #212529;
-  --bs-dropdown-bg: #fff;
-  --bs-dropdown-border-color: var(--bs-border-color-translucent);
+  --bs--padding-y: 0.5rem;
+  --bs--spacer: 0.125rem;
+  --bs--font-size: 1rem;
+  --bs--color: #212529;
+  --bs--bg: #fff;
+  --bs--border-color: var(--bs-border-color-translucent);
   --bs-dropdown-border-radius: 0.375rem;
   --bs-dropdown-border-width: 1px;
   --bs-dropdown-inner-border-radius: calc(0.375rem - 1px);
@@ -3381,7 +3381,7 @@ textarea.form-control-lg {
   margin-top: 0;
   margin-bottom: var(--bs-dropdown-spacer);
 }
-.dropup .dropdown-toggle::after {
+.dropup . {
   display: inline-block;
   margin-left: 0.255em;
   vertical-align: 0.255em;
@@ -3402,7 +3402,7 @@ textarea.form-control-lg {
   margin-top: 0;
   margin-left: var(--bs-dropdown-spacer);
 }
-.dropend .dropdown-toggle::after {
+.dropend . {
   display: inline-block;
   margin-left: 0.255em;
   vertical-align: 0.255em;
@@ -3415,7 +3415,7 @@ textarea.form-control-lg {
 .dropend .dropdown-toggle:empty::after {
   margin-left: 0;
 }
-.dropend .dropdown-toggle::after {
+.dropend . {
   vertical-align: 0;
 }
 
@@ -3426,13 +3426,13 @@ textarea.form-control-lg {
   margin-top: 0;
   margin-right: var(--bs-dropdown-spacer);
 }
-.dropstart .dropdown-toggle::after {
+.dropstart . {
   display: inline-block;
   margin-left: 0.255em;
   vertical-align: 0.255em;
   content: "";
 }
-.dropstart .dropdown-toggle::after {
+.dropstart . {
   display: none;
 }
 .dropstart .dropdown-toggle::before {

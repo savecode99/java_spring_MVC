@@ -1,10 +1,13 @@
 package com.bavung.javaMVC.Entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -37,6 +40,17 @@ public class product {
     private Long sold;
     private String factory;
     private String target;
+
+    @OneToMany(mappedBy="product")
+    private List<CartDetail> cartDetail;
+
+    public List<CartDetail> getCartDetail() {
+        return cartDetail;
+    }
+
+    public void setCartDetail(List<CartDetail> cartDetail) {
+        this.cartDetail = cartDetail;
+    }
 
     public Long getId() {
         return id;

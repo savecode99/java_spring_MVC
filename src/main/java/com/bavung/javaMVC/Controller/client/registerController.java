@@ -20,6 +20,7 @@ import jakarta.validation.Valid;
 
 
 
+
 @Controller
 public class registerController {
     private PasswordEncoder passwordEncoder;
@@ -62,9 +63,12 @@ public class registerController {
         return "/client/auth/login";
     }
     @GetMapping("/login")
-    public String getLogin(Model model) {
-        model.addAttribute("userRegister", new RegisterDTO() );
+    public String getLogin() {
+       // model.addAttribute("userRegister", new RegisterDTO() );
         return "client/auth/login";
     }
+
+    
+    
     
 }
