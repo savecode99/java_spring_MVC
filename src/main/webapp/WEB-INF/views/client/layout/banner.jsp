@@ -40,11 +40,14 @@
                         <i class="fa fa-phone-alt fa-3x text-white"></i>
                     </div>
                     <div class="featurs-content text-center">
-                        <h5>24/7 Support</h5>
+                        <h5>
+                            <a href="/client/chat">24/7 Support</a>
+                        </h5>
                         <p class="mb-0">Support every time fast</p>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>

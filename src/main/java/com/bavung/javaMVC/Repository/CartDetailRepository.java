@@ -7,10 +7,15 @@ import org.springframework.stereotype.Repository;
 
 import com.bavung.javaMVC.Entities.Cart;
 import com.bavung.javaMVC.Entities.CartDetail;
-import com.bavung.javaMVC.Entities.product;
+import com.bavung.javaMVC.Entities.Product;
+
+import jakarta.transaction.Transactional;
 
 @Repository
 public interface CartDetailRepository extends JpaRepository<CartDetail, Long>{
-    CartDetail findByCartAndProduct(Cart cart , product product);
+    CartDetail findByCartAndProduct(Cart cart , Product product);
     List<CartDetail> findByCart(Cart cart);
+   @Transactional
+    void deleteByProductAndCart(Product product ,Cart cart);
+    
 }

@@ -26,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService{
         {
             throw new UsernameNotFoundException("Sai tên đăng nhập hoặc mật khẩu");
         }
-        // dua vao tinh da hinh se tu dong ep kieu theo class cha
+       
        return new User(
                 user.getEmail(),
                 user.getPassword(),

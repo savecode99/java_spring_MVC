@@ -10,7 +10,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="" />
                 <meta name="author" content="" />
-                <title>Register - Laptopshop</title>
+                <title>Register</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             </head>
@@ -43,22 +43,7 @@
                                                         <form:errors path="passWord" cssClass = "invalid-feedback"/>
                                                     </c:set>
 
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating mb-3 mb-md-0">
-                                                                <form:input class="form-control" id="inputFirstName"
-                                                                    type="text" placeholder="Enter your first name" path="firstName" />
-                                                                <label for="inputFirstName">First name</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating">
-                                                                <form:input class="form-control" id="inputLastName"
-                                                                    type="text" placeholder="Enter your last name" path="lastName"/>
-                                                                <label for="inputLastName">Last name</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
 
                                                     <div class="form-floating mb-3">
                                                         <form:input class="form-control ${not empty errorEmail ?'is-invalid': ''}" type="email"
@@ -85,7 +70,22 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-3 mb-md-0">
+                                                                <form:input class="form-control" id="inputFirstName"
+                                                                    type="text" placeholder="Enter your first name" path="firstName" />
+                                                                <label for="inputFirstName">First name</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating">
+                                                                <form:input class="form-control" id="inputLastName"
+                                                                    type="text" placeholder="Enter your last name" path="lastName"/>
+                                                                <label for="inputLastName">Last name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="mt-5 mb-0">
                                                         <div class="d-grid">
                                                             <button class="btn btn-primary btn-block">

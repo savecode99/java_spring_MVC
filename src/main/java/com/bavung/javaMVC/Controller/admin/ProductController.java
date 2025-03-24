@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bavung.javaMVC.Entities.product;
+import com.bavung.javaMVC.Entities.Product;
 import com.bavung.javaMVC.Service.ProductService;
 import com.bavung.javaMVC.Service.UpLoadFileService;
 
@@ -36,7 +36,7 @@ public class ProductController {
     @GetMapping("admin/product")
     public String getProduct(Model model)
     {
-        List<product> items = this.productService.getAllProduct();
+        List<Product> items = this.productService.getAllProduct();
         model.addAttribute("listProduct", items);
         // for(product item : items)
         // {
@@ -46,12 +46,12 @@ public class ProductController {
     }
     @GetMapping("admin/product/create")
     public String getCreatProductPage(Model model) {
-        model.addAttribute("product", new product());
+        model.addAttribute("product", new Product());
         return "admin/product/create";
     }
     
     @PostMapping("admin/product/create")
-    public String handleCreatProduct(@ModelAttribute("product") @Valid product product  , 
+    public String handleCreatProduct(@ModelAttribute("product") @Valid Product product  , 
                                     BindingResult bindingResultproduct,
                                     @RequestParam("file") MultipartFile file ) {
         String image = this.upLoadFileService.hanldeUpLoadFile(file, "product");
@@ -68,7 +68,7 @@ public class ProductController {
     @GetMapping("/admin/product/show/{id}")
     public String getDetailPage(@PathVariable Long id, Model model) {
 
-        Optional<product> result = this.productService.getProductById(id);
+        Optional<Product> result = this.productService.getProductById(id);
         
         model.addAttribute("id", id);
         if(result.isPresent())
@@ -83,7 +83,7 @@ public class ProductController {
     public String handleDelete(@PathVariable Long id ) {
         //TODO: process POST request       
         //System.err.println(id);
-        Optional<product> result = this.productService.getProductById(id);
+        Optional<Product> result = this.productService.getProductById(id);
         if(result.isPresent())
         {
             this.productService.deleteProduct(result.get());
@@ -93,15 +93,15 @@ public class ProductController {
     
     @GetMapping("admin/product/update/{id}")
     public String getMethodName(@PathVariable Long id , Model model) {
-        Optional<product> result = this.productService.getProductById(id);
+        Optional<Product> result = this.productService.getProductById(id);
         model.addAttribute("product", result.get());
         return "/admin/product/ProductUpdate";
     }
     @PostMapping("admin/product/update")
-    public String handleUpdateProduct(@ModelAttribute("product") @Valid product pro ,
+    public String handleUpdateProduct(@ModelAttribute("product") @Valid Product pro ,
                                     BindingResult bindingResultproduct ,
                                     @RequestParam ("file") MultipartFile file ) {
-        product CurrentProduct = this.productService.getProductById(pro.getId()).get();
+        Product CurrentProduct = this.productService.getProductById(pro.getId()).get();
         if(bindingResultproduct.hasErrors())
         {
             return "admin/product/ProductUpdate";

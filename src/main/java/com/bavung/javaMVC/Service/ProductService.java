@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.bavung.javaMVC.Entities.Cart;
 import com.bavung.javaMVC.Entities.CartDetail;
+import com.bavung.javaMVC.Entities.Product;
 import com.bavung.javaMVC.Entities.User;
-import com.bavung.javaMVC.Entities.product;
 import com.bavung.javaMVC.Repository.CartDetailRepository;
 import com.bavung.javaMVC.Repository.CartRepository;
 import com.bavung.javaMVC.Repository.ProductRepo;
@@ -30,22 +30,22 @@ public class ProductService {
         this.cartDetailRepository = cartDetailRepository;
     }
 
-    public List<product> getAllProduct()
+    public List<Product> getAllProduct()
     {
         return this.productRepo.findAll();
     }
 
-    public Optional<product> getProductById(Long id)
+    public Optional<Product> getProductById(Long id)
     {
         return this.productRepo.findById(id);
     }
 
-    public product save(product product)
+    public Product save(Product product)
     {
         return this.productRepo.save(product);
     }
 
-    public void deleteProduct(product product)
+    public void deleteProduct(Product product)
     {
         this.productRepo.delete(product);
     }
@@ -54,7 +54,7 @@ public class ProductService {
     {
         return this.productRepo.findAllDistinctFactory();
     }
-    public List<product> getProductsByFactory(String factory)
+    public List<Product> getProductsByFactory(String factory)
     {
         return this.productRepo.findByFactory(factory);
     }
@@ -74,10 +74,10 @@ public class ProductService {
                 cart = this.cartRepository.save(otherCart);
             }
 
-            Optional<product> result = this.productRepo.findById(productId);
+            Optional<Product> result = this.productRepo.findById(productId);
             if(result.isPresent())
             {
-                product product = result.get();
+                Product product = result.get();
                 CartDetail oldCartDetail = this.cartDetailRepository.findByCartAndProduct(cart, product);
                 if(oldCartDetail != null){
                     oldCartDetail.setQuantity(oldCartDetail.getQuantity() + 1);

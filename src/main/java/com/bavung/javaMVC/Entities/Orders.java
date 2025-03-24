@@ -26,7 +26,7 @@ public class Orders {
 
    
    @OneToMany(mappedBy="order")
-   private List<order_detail> orders_detail;
+   private List<Order_detail> orders_detail;
 
     public Long getId() {
         return id;
@@ -52,11 +52,11 @@ public class Orders {
         this.user = user;
     }
 
-    public List<order_detail> getOrders_detail() {
+    public List<Order_detail> getOrders_detail() {
         return orders_detail;
     }
 
-    public void setOrders_detail(List<order_detail> orders_detail) {
+    public void setOrders_detail(List<Order_detail> orders_detail) {
         this.orders_detail = orders_detail;
     }
 

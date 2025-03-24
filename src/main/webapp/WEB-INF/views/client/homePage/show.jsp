@@ -26,7 +26,7 @@
      <!-- Template Stylesheet -->
      <link href="/client/css/style.css" rel="stylesheet">
 
-     <title>LaptopShop</title>
+     <title>Welcome</title>
 </head>
 <body>
 
@@ -132,7 +132,7 @@
                                                 <div class="fruite-img">
                                                     <img src="/images/product/${product.image}" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">NEW</div>
+                                            
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                     <h4 style="font-size: 15px;">
                                                         <a href="/product/${product.id}">${product.name}</a>
@@ -146,7 +146,7 @@
                                                         
                                                         
                                                         <form action="/add-product/${product.id}" method="post">
-                                                            <button href="#" class="mx-auto border border-secondary rounded-pill px-3 text-primary">
+                                                            <button href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
                                                                 <i class="fa fa-shopping-bag me-2 text-primary" style="text-align: center;"></i> Add to cart
                                                             </button>   
                                                             <input type="hidden" name="${_csrf.parameterName}" 

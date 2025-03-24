@@ -24,7 +24,7 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-     @NotNull
+    @NotNull
     @Email(message = "Vui lòng điền email của bạn", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
 

@@ -58,7 +58,7 @@ public class SecurityConfig {
                 .permitAll()
                 // cho phép forward từ "/login" truy cập tới view
 
-                .requestMatchers( "/client/**", "/css/**", "/js/**", "/images/**", "/product/**","/register","/","/login")
+                .requestMatchers( "/client/**", "/css/**", "/js/**", "/images/**", "/product/**","/register","/","/login", "/filterByFactory")
                 .permitAll()
 
                 .requestMatchers("/admin/**").hasRole("ADMIN")

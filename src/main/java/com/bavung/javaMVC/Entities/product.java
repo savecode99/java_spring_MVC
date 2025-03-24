@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "product")
 
-public class product {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +34,7 @@ public class product {
     private String detailDesc;
     private String shortDesc;
 
-    @NotNull( message="vui lòng nhập số lượng")
+    @NotNull( message="Vui lòng nhập số lượng")
     @Min(value = 1 , message="Số lượng phải lớn hơn hoặc bằng 1")
     private Long quantity;
     private Long sold;

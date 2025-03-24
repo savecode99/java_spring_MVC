@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.bavung.javaMVC.Entities.Cart;
 import com.bavung.javaMVC.Entities.CartDetail;
+import com.bavung.javaMVC.Entities.Product;
 import com.bavung.javaMVC.Repository.CartDetailRepository;
 
 @Service
@@ -19,4 +20,8 @@ public class CartDetailService {
     {   
         return this.cartDetailRepository.findByCart(cart);
     }
+    public void deleteByProductAndCart(Product product , Cart cart){
+        this.cartDetailRepository.deleteByProductAndCart(product, cart);
+    }
+    
 }

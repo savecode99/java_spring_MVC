@@ -1,6 +1,7 @@
 package com.bavung.javaMVC.Controller.client;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bavung.javaMVC.Entities.Cart;
 import com.bavung.javaMVC.Entities.CartDetail;
+import com.bavung.javaMVC.Entities.Product;
 import com.bavung.javaMVC.Entities.User;
-import com.bavung.javaMVC.Entities.product;
 import com.bavung.javaMVC.Service.CartDetailService;
 import com.bavung.javaMVC.Service.CartService;
 import com.bavung.javaMVC.Service.ProductService;
@@ -25,13 +26,13 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Controller
-public class itemController {
+public class ItemController {
     private ProductService productService;
     private UserService userService;
     private  CartService cartService;
     private CartDetailService cartDetailService;
 
-    public itemController(ProductService productService , UserService userService , CartService cartService , CartDetailService cartDetailService){
+    public ItemController(ProductService productService , UserService userService , CartService cartService , CartDetailService cartDetailService){
         this.productService = productService;
         this.userService = userService;
         this.cartService = cartService;
@@ -39,7 +40,7 @@ public class itemController {
     }
     @GetMapping("/product/{id}")
     public String DetailPage(@PathVariable Long id , Model model) {
-        product product = this.productService.getProductById(id).get();
+        Product product = this.productService.getProductById(id).get();
         model.addAttribute("product", product);
         return "/client/product/detail";
     }
@@ -54,7 +55,7 @@ public class itemController {
     }
     
     @GetMapping("/cart-detail")
-    public String getMethodName(Model model  , HttpServletRequest request) {
+    public String showCartDetail(Model model  , HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         String email = (String)session.getAttribute("email");
         User user = this.userService.getUserByEmail(email);
@@ -71,10 +72,26 @@ public class itemController {
 
     }
 
-    @PostMapping("/delete-detail/{id}")
-    public String postMethodName(@PathVariable long id) {
+    @PostMapping("/delete-detail/{productId}")
+    public String handleDeleteProduct( @PathVariable long productId , HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+        String email = (String)session.getAttribute("email");
+        User user = this.userService.getUserByEmail(email);
+        Cart cart = this.cartService.findByUser(user);
+        
+        Optional<Product> res = this.productService.getProductById(productId);
+        if(!res.isEmpty()){
+            Product product = res.get();
+            this.cartDetailService.deleteByProductAndCart(product ,cart);
+            cart.setSum(cart.getSum()-1);
+            cart = this.cartService.SaveCart(cart);
+            session.setAttribute("sum",cart.getSum() );
+        }
         //TODO: process POST request
-        System.out.println(id);
+        System.out.println( "id p" + productId);
+        System.out.println("Giá trị sum trong session khi load trang: " + session.getAttribute("sum"));
+
         return "redirect:/cart-detail";
     }
     

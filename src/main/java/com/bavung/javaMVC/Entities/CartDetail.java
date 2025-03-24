@@ -25,12 +25,12 @@ public class CartDetail {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private product product;
-    public product getProduct() {
+    private Product product;
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(product product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 

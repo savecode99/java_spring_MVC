@@ -139,7 +139,7 @@
                                                 </p>
                                             </td>
                                             <td>
-                                                <form action="/delete-detail/${detail.id}" method="post">
+                                                <form action="/delete-detail/${detail.product.id}" method="post">
                                                     <button class="btn btn-md rounded-circle bg-light border mt-4" >
                                                         <i class="fa fa-times text-danger"></i>
                                                     </button>
@@ -172,7 +172,7 @@
                                         <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
                                         <div class="d-flex justify-content-between mb-4">
                                             <h5 class="mb-0 me-4">Tạm tính:</h5>
-                                            <p class="mb-0" data-cart-total-price="${totalPrice}">
+                                            <p class="mb-0" >
                                                 <fmt:formatNumber type="number" value="${totalPrice}"/>đ
                                             </p>
                                         </div>

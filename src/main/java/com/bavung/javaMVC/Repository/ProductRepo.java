@@ -7,19 +7,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.bavung.javaMVC.Entities.product;
+import com.bavung.javaMVC.Entities.Product;
 @Repository
-public interface ProductRepo extends JpaRepository<product, Long>{
-    List<product> findAll();
+public interface ProductRepo extends JpaRepository<Product, Long>{
+    List<Product> findAll();
 
-    Optional<product> findById(Long id);
+    Optional<Product> findById(Long id);
 
-    product save(product product);
+    Product save(Product product);
 
-    void delete(product product);
+    void delete(Product product);
 
-    @Query("SELECT DISTINCT p.factory FROM product p")
+    @Query("SELECT DISTINCT p.factory FROM Product p")
     List<String> findAllDistinctFactory();
 
-    List<product> findByFactory(String factory);
+    List<Product> findByFactory(String factory);
 }

@@ -22,11 +22,11 @@ import jakarta.validation.Valid;
 
 
 @Controller
-public class registerController {
+public class RegisterController {
     private PasswordEncoder passwordEncoder;
     private UserService userService;
     private UpLoadFileService upLoadFileService;
-    public registerController(UserService userService , UpLoadFileService upLoadFileService , PasswordEncoder passwordEncoder)
+    public RegisterController(UserService userService , UpLoadFileService upLoadFileService , PasswordEncoder passwordEncoder)
     {
         this.userService = userService;
         this.upLoadFileService = upLoadFileService;

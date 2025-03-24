@@ -1,15 +1,25 @@
 package com.bavung.javaMVC.model;
 
 import com.bavung.javaMVC.Service.validator.RegisterChecked;
-import com.bavung.javaMVC.Service.validator.StrongPassword;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @RegisterChecked
 public class RegisterDTO {
+    @NotNull
     private String firstName ;
+    @NotNull
     private String lastName ;
+    @NotNull
+    @Email(message = "Vui lòng điền email của bạn", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email ;
-    @StrongPassword
+    // /@StrongPassword
+    @NotNull
+    @Size(min = 2 , message = "Cần tối thiểu 3 ký tự")
     private String passWord ;
+    @NotNull
     private String confirmPassWord ;
     public String getFirstName() {
         return firstName;
