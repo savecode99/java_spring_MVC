@@ -101,25 +101,25 @@ public class UserController {
         return "admin/user/UserDetail";
     }
 
-    @GetMapping("admin/user/update/{id}")
-    public String UpdateUser(Model model, @PathVariable Long id)
-    {
-        Optional<User> result = this.userService.findById(id);
-       // System.err.println(result.get());
-        model.addAttribute("user", result.get());
-        return "admin/user/UserUpdate";
-    }
+    // @GetMapping("admin/user/update/{id}")
+    // public String UpdateUser(Model model, @PathVariable Long id)
+    // {
+    //     Optional<User> result = this.userService.findById(id);
+    //    // System.err.println(result.get());
+    //     model.addAttribute("user", result.get());
+    //     return "admin/user/UserUpdate";
+    // }
     
-    @PostMapping("admin/user/update")
-    public String handleUpdateUser(@ModelAttribute("user") User user  ) {
-        User currentUser = this.userService.findById(user.getId()).get();
+    // @PostMapping("admin/user/update")
+    // public String handleUpdateUser(@ModelAttribute("user") User user  ) {
+    //     User currentUser = this.userService.findById(user.getId()).get();
 
-        currentUser.setAddress(user.getAddress());
-        currentUser.setFullName(user.getFullName());
-        currentUser.setPhoneNumber(user.getPhoneNumber());
-        this.userService.handleSaveUser(currentUser);
-        return "redirect:/admin/user";
-    }
+    //     currentUser.setAddress(user.getAddress());
+    //     currentUser.setFullName(user.getFullName());
+    //     currentUser.setPhoneNumber(user.getPhoneNumber());
+    //     this.userService.handleSaveUser(currentUser);
+    //     return "redirect:/admin/user";
+    // }
 
     @GetMapping("admin/user/delete/{id}")
     public String DeleteUser(Model model, @PathVariable Long id) {

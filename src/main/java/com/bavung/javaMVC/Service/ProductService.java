@@ -95,8 +95,7 @@ public class ProductService {
                     this.cartRepository.save(cart);
                     
                     session.setAttribute("sum", cart.getSum());
-                
-                    
+                        
                 }
                 
             }

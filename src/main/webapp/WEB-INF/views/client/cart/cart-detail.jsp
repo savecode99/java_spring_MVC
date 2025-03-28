@@ -116,9 +116,13 @@
                                         <td>
                                                 <div class="input-group quantity mt-4" style="width: 100px;">
                                                     <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                                            <i class="fa fa-minus"></i>
-                                                        </button>
+                                                        
+                                                        <form action="/decrease-quantity-detail/${detail.product.id}/${detail.cart.id}" method="post">
+                                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                                                <i class="fa fa-minus"></i>
+                                                            </button>
+                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                                        </form>
                                                     </div>
                                                     <input type="text" 
                                                         class="form-control form-control-sm text-center border-0" 
@@ -126,9 +130,12 @@
                                                         data-cart-detail-id="${detail.id}"
                                                         data-cart-detail-price="${detail.price}">
                                                     <div class="input-group-btn">
-                                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
+                                                        <form action="/increase-quantity-detail/${detail.product.id}/${detail.cart.id}" method="post">
+                                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </td>
@@ -189,8 +196,38 @@
                                         <p class="mb-0 pe-4" data-cart-total-price="${totalPrice}"> 
                                             <fmt:formatNumber type="number" value="${totalPrice}"/>đ
                                         </p>
+
                                     </div>
-                                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Xác nhận đặt hàng</button>
+                                        <form method="POST" action="/place-order">
+
+                                            <div class="mb-3 col-12 col-md-6">
+                                                <label class="form-label">Receiver Name:</label>
+                                                <input type="text" name="receiverName" class="form-control" required />
+                                            </div>
+                                        
+                                            
+                                            <div class="mb-3 col-12 col-md-6">
+                                                <label class="form-label">Phone Number:</label>
+                                                <input type="text" name="phoneNumber" class="form-control" required />
+                                            </div>
+                                        
+                                            
+                                            <div class="mb-3 col-12">
+                                                <label class="form-label">Delivery Address:</label>
+                                                <input type="text" name="deliveryAddress" class="form-control" required />
+                                            </div>
+                                        
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+                                            <div class="d-flex justify-content-center mt-4">
+                                                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="submit">
+                                                    Xác nhận đặt hàng
+                                                </button>
+                                            </div>
+                                            <!-- <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="submit">Xác nhận đặt hàng</button> -->
+                                        </form>
+                                        
+                                    
                                 </div>
                             </c:if>
                         

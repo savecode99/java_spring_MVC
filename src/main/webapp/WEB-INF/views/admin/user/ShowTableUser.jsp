@@ -60,7 +60,7 @@
                                                             <td>
                                                                 <div class="">
                                                                     <a href="/admin/user/show/${user.id}" class = "btn btn-primary" >View</a>
-                                                                    <a href="/admin/user/update/${user.id}" class = "btn btn-warning" >Update</a>
+                                                                    <!-- <a href="/admin/user/update/${user.id}" class = "btn btn-warning" >Update</a> -->
                                                                     <a href="/admin/user/delete/${user.id}" class = "btn btn-danger" >Delete</a>
                                                                     
                                                                 </div>

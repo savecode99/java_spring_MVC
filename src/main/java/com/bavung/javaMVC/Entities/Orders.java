@@ -2,6 +2,8 @@ package com.bavung.javaMVC.Entities;
 
 import java.util.List;
 
+import com.bavung.javaMVC.Enum.StatusEnum;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,34 @@ public class Orders {
     private Long id;
 
     private Long totalPrice;
+    private String nameReceiver;
+    private String phoneNumber;
+    private StatusEnum statusEnum;
+    public String getNameReceiver() {
+        return nameReceiver;
+    }
+
+    public void setNameReceiver(String nameReceiver) {
+        this.nameReceiver = nameReceiver;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    private String address;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -59,5 +89,15 @@ public class Orders {
     public void setOrders_detail(List<Order_detail> orders_detail) {
         this.orders_detail = orders_detail;
     }
+
+    public StatusEnum getStatusEnum() {
+        return statusEnum;
+    }
+
+    public void setStatusEnum(StatusEnum statusEnum) {
+        this.statusEnum = statusEnum;
+    }
+
+
 
 }

@@ -25,6 +25,7 @@ import jakarta.servlet.http.HttpSession;
 
 
 
+
 @Controller
 public class ItemController {
     private ProductService productService;
@@ -67,7 +68,7 @@ public class ItemController {
         }
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("ListDetails", cartDetails);
-        System.err.println(cartDetails.size());
+        //System.out.println(cartDetails.size());
         return "/client/cart/cart-detail";
 
     }
@@ -89,11 +90,25 @@ public class ItemController {
             session.setAttribute("sum",cart.getSum() );
         }
         //TODO: process POST request
-        System.out.println( "id p" + productId);
-        System.out.println("Giá trị sum trong session khi load trang: " + session.getAttribute("sum"));
+        // System.out.println( "id p" + productId);
+        // System.out.println( session.getAttribute("sum"));
 
         return "redirect:/cart-detail";
     }
     
+    @PostMapping("/increase-quantity-detail/{productId}/{cartId}")
+    public String handldeIncreaseQuantity(@PathVariable("productId") long productId , @PathVariable("cartId") long cartId ) {
+        //TODO: process POST request
+        System.out.println(productId + " " + cartId);
+        this.cartDetailService.IncreaseQuantity(productId, cartId);
+        return  "redirect:/cart-detail";
+    } 
+    
+    @PostMapping("/decrease-quantity-detail/{productId}/{cartId}")
+    public String handldeDecreaseQuantity(@PathVariable("productId") long productId , @PathVariable("cartId") long cartId ) {
+        //TODO: process POST request
+        this.cartDetailService.DecreaseQuantity(productId, cartId);
+        return  "redirect:/cart-detail";
+    } 
     
 }

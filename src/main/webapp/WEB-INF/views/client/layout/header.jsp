@@ -42,7 +42,7 @@
                                     <!-- <c:out value="${pageContext.request.userPrincipal.name}" /> -->
                                 </div>
                             </li>
-                            <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
+                            <li><a class="dropdown-item" href="/user/update/ ${sessionScope.email}">Quản lý tài khoản</a></li>
                             <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
                             <li>
                                 <hr class="dropdown-divider">
