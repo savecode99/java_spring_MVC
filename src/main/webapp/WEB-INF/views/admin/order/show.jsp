@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"  language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,7 +32,58 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                         <div>
-                            my order
+                            <div class = "">
+                                <div class = "row">
+                                        <div class = "col-12 mx-auto">
+                        
+                                            <div class="d-flex justify-content-between">
+                                                <h3>Table Order</h3>
+                                            </div>
+                        
+                                            <table class="table table-bordered " style="text-align: center;">
+                                                <thead >
+                                                  <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">PhoneNumber</th>
+                                                    <th scope="col">Total_Price</th>
+                                                    <th scope="col">Time</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                  </tr>
+                                                </thead>
+                        
+                                                <tbody >
+                                                    <c:forEach var="Order" items="${ListOrder}" >
+                                                        <tr>
+                                                            <td>${Order.id}</td>
+                                                            <td>${Order.nameReceiver}</td>
+                                                            <td>${Order.address}</td>
+                                                            <td>${Order.phoneNumber}</td>
+                                                            <td>${Order.totalPrice}</td>
+                                                            <td>${Order.createdAt}</td>
+                                                            
+                                                            <td>${Order.statusEnum}</td>
+                                                            <td>
+                                                                <div class="">
+                                                                    <a href="/admin/order/show/${Order.id}" class = "btn btn-primary" >View</a>
+                                                                    <a href="/admin/product/update/${product.id}" class = "btn btn-warning" >Update</a>
+            
+                                                                    <!-- <form action="/admin/product/delete/${product.id}" method="post" onsubmit="return confirmDelete()" class="d-inline">
+                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    </form> -->
+                                                                    
+                                                                </div>
+                                                                
+                                                            </td>
+                                                          </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>

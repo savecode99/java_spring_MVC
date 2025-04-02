@@ -24,7 +24,7 @@ public class Order_detail {
     private Product product;
     
     private Long quantity;
-    private Long Price;
+    private Double Price;
 
     public Long getId() {
         return id;
@@ -58,11 +58,11 @@ public class Order_detail {
         this.quantity = quantity;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
-    public void setPrice(Long Price) {
+    public void setPrice(Double Price) {
         this.Price = Price;
     }
 

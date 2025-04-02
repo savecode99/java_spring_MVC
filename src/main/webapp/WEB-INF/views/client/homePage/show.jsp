@@ -216,33 +216,7 @@
 <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    // $(document).ready(function() {
-    //     // Xử lý sự kiện cho nút "All Products"
-    //     $('#allProductsLink').click(function(event) {
-    //         // Không cần ngăn chặn hành động mặc định
-    //         // Có thể thêm logic nếu cần
-    //     });
 
-    //     $('.dropdown-item').click(function(event) {
-    //         event.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
-    //         var factory = $(this).attr('href').split('=')[1]; // Lấy giá trị factory từ liên kết
-
-    //         $.ajax({
-    //             url: '/filterByFactory',
-    //             type: 'GET',
-    //             data: { factory: factory },
-    //             success: function(data) {
-    //                 $('#productList').html(data); // Cập nhật danh sách sản phẩm
-    //             },
-    //             error: function() {
-    //                 alert('Có lỗi xảy ra. Vui lòng thử lại.');
-    //             }
-    //         });
-    //     });
-    // });
-</script>
-<!-- Template Javascript -->
 <script src="/client/js/main.js"></script>
 </body>
 </html>

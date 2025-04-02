@@ -63,10 +63,7 @@
                                                                 <div class="">
                                                                     <a href="/admin/product/show/${product.id}" class = "btn btn-primary" >View</a>
                                                                     <a href="/admin/product/update/${product.id}" class = "btn btn-warning" >Update</a>
-                                                                    <!-- <a href="/admin/product/delete/${product.id}" class = "btn btn-danger" >Delete</a> -->
-                                                                    <form action="/admin/product/delete/${product.id}" method="post" onsubmit="return confirmDelete()" class="d-inline">
-                                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                                    </form>
+                                                                    
                                                                     
                                                                 </div>
                                                                 

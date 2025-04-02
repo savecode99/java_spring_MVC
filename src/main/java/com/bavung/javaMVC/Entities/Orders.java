@@ -1,16 +1,21 @@
 package com.bavung.javaMVC.Entities;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import com.bavung.javaMVC.Enum.StatusEnum;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,7 +28,10 @@ public class Orders {
     private Long totalPrice;
     private String nameReceiver;
     private String phoneNumber;
+    @Enumerated(EnumType.STRING)
     private StatusEnum statusEnum;
+
+    private ZonedDateTime createdAt ;
     public String getNameReceiver() {
         return nameReceiver;
     }
@@ -98,6 +106,20 @@ public class Orders {
         this.statusEnum = statusEnum;
     }
 
+   @PrePersist
+    public void handleBeforeCreate() {
+        this.createdAt = ZonedDateTime.now(ZoneId.of("Asia/Bangkok"));
+    }
+
+    public ZonedDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(ZonedDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+   
 
 
 }
