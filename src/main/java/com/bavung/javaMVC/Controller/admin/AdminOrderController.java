@@ -13,6 +13,7 @@ import com.bavung.javaMVC.Entities.Orders;
 import com.bavung.javaMVC.Service.OrderDetailService;
 import com.bavung.javaMVC.Service.OrderService;
 
+
 @Controller
 public class AdminOrderController {
     private OrderService orderService;
@@ -21,7 +22,7 @@ public class AdminOrderController {
         this.orderService = orderService;
         this.orderDetailService = orderDetailService;
     }
-    @GetMapping("admin/order")
+    @GetMapping("/admin/order")
     public String handleShowAllOrder(Model model)
     {
         List<Orders> ListOrder = this.orderService.getAllOrders();
@@ -37,7 +38,18 @@ public class AdminOrderController {
             model.addAttribute("listOrder_details", listOrder_details);
         }
         
-        return "showDetail";
+        return "admin/order/OrderDetail";
     }
+    @GetMapping("/admin/order/cancel/{orderId}")
+    public String handleCancelOrderDetail(@PathVariable long orderId) {
+        Optional<Orders> res = this.orderService.getOrderById(orderId);
+        if(!res.isEmpty()){
+            Orders order = res.get();
+            this.orderService.handleCancelOrder(order);
+        }
+        
+        return "redirect:/admin/order";
+    }
+    
     
 }

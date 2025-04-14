@@ -44,7 +44,7 @@
                                                 <thead >
                                                   <tr>
                                                     <th scope="col">ID</th>
-                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Receiver</th>
                                                     <th scope="col">Address</th>
                                                     <th scope="col">PhoneNumber</th>
                                                     <th scope="col">Total_Price</th>
@@ -62,17 +62,13 @@
                                                             <td>${Order.address}</td>
                                                             <td>${Order.phoneNumber}</td>
                                                             <td>${Order.totalPrice}</td>
-                                                            <td>${Order.createdAt}</td>
-                                                            
+                                                            <td>${Order.createdAt}</td>                                                           
                                                             <td>${Order.statusEnum}</td>
                                                             <td>
                                                                 <div class="">
                                                                     <a href="/admin/order/show/${Order.id}" class = "btn btn-primary" >View</a>
                                                                     <a href="/admin/product/update/${product.id}" class = "btn btn-warning" >Update</a>
-            
-                                                                    <!-- <form action="/admin/product/delete/${product.id}" method="post" onsubmit="return confirmDelete()" class="d-inline">
-                                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                                    </form> -->
+                                                                    <a href="/admin/order/cancel/${Order.id}" class = "btn btn-danger" >Cancel</a>
                                                                     
                                                                 </div>
                                                                 

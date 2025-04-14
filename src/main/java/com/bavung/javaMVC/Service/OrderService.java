@@ -77,4 +77,11 @@ public class OrderService {
     public Optional<Orders> getOrderById(long id){
         return this.orderRepository.findById(id);
     }
+    public void handleCancelOrder(Orders orders){
+        if(orders.getStatusEnum() == StatusEnum.PENDING || orders.getStatusEnum() == StatusEnum.CONFIRMED ){
+            List<Order_detail> list = this.orderDetailRepository.findByOrder(orders);
+            for(Order_detail x : list) this.orderDetailRepository.delete(x);
+            this.orderRepository.delete(orders);
+        }
+    }
 }
