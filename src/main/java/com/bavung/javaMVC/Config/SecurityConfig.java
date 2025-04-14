@@ -61,10 +61,10 @@ public class SecurityConfig {
                 .requestMatchers( "/client/**", "/css/**", "/js/**", "/images/**", "/product/**","/register","/","/login", "/filterByFactory")
                 .permitAll()
 
-                //.requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
 
-                //.anyRequest().authenticated())
-                .anyRequest().permitAll())
+                .anyRequest().authenticated())
+                //.anyRequest().permitAll())
             .formLogin(formLogin -> formLogin
                 .loginPage("/login")
                 .failureUrl("/login?error")
