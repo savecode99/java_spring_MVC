@@ -3,6 +3,7 @@ package com.bavung.javaMVC.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bavung.javaMVC.Entities.Role;
@@ -14,12 +15,14 @@ import com.bavung.javaMVC.model.RegisterDTO;
 @Service
 public class UserService {
 
+    private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
     private RoleRepository roleRepository;
-    public UserService (UserRepository userRepository, RoleRepository roleRepository)
+    public UserService (UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder)
     {
          this.userRepository = userRepository;
          this.roleRepository = roleRepository;
+         this.passwordEncoder = passwordEncoder;
     }
 
     public String sayhello()
@@ -70,5 +73,15 @@ public class UserService {
         return this.userRepository.findByEmail(email);
     }
 
+    public boolean matchOldPassword(String oldPassword , User user){
+        return passwordEncoder.matches(oldPassword, user.getPassword());
+    }
+    public boolean matchNewPassword(String newPassword , String comfirmNewPassword){
+        return newPassword.equals(comfirmNewPassword);
+    }
 
+    public void updatePassword(User user , String newPassword){
+        user.setPassword(passwordEncoder.encode(newPassword));
+        this.userRepository.save(user);
+    }
 }

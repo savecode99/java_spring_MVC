@@ -14,7 +14,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
 
-import com.bavung.javaMVC.Service.CustomUserDetailsService;
 import com.bavung.javaMVC.Service.UserService;
 
 import jakarta.servlet.DispatcherType;

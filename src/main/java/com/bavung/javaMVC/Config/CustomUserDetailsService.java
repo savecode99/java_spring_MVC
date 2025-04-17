@@ -1,4 +1,4 @@
-package com.bavung.javaMVC.Service;
+package com.bavung.javaMVC.Config;
 
 import java.util.Collections;
 
@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.bavung.javaMVC.Service.UserService;
 
 
 
