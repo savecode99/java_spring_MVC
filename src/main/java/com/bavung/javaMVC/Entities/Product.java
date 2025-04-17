@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
@@ -38,12 +40,14 @@ public class Product {
     @Min(value = 1 , message="Số lượng phải lớn hơn hoặc bằng 1")
     private Long quantity;
     private Long sold;
-    private String factory;
     private String target;
 
     @OneToMany(mappedBy="product")
     private List<CartDetail> cartDetail;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")  
+    private Category category;
     public List<CartDetail> getCartDetail() {
         return cartDetail;
     }
@@ -116,13 +120,6 @@ public class Product {
         this.sold = sold;
     }
 
-    public String getFactory() {
-        return factory;
-    }
-
-    public void setFactory(String factory) {
-        this.factory = factory;
-    }
 
     public String getTarget() {
         return target;
@@ -144,10 +141,17 @@ public class Product {
         sb.append(", shortDesc=").append(shortDesc);
         sb.append(", quantity=").append(quantity);
         sb.append(", sold=").append(sold);
-        sb.append(", factory=").append(factory);
         sb.append(", target=").append(target);
         sb.append('}');
         return sb.toString();
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 

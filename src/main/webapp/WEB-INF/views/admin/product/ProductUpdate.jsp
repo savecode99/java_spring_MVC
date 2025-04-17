@@ -79,7 +79,7 @@
                                                 <c:set var = "errorPrice">
                                                     <form:errors path="Price"  cssClass = "invalid-feedback"/>
                                                 </c:set>
-                                                <form:input type="number" step="0.1" class="form-control ${ not empty errorPrice ?'is-invalid':''}" path = "Price" />
+                                                <form:input type="number" step="0.1" class="form-control ${ not empty errorPrice ?'is-invalid':''}" path = "price" />
                                                 ${errorPrice}
                                             </div>
                                             
@@ -104,15 +104,14 @@
                                             </div>
 
                                             <div class="mb-3 col-12 col-md-6">
-                                                <label class="form-label">Factory:</label>
-                                                <form:select class="form-select" path="factory">
-                                                    <form:option value="MacBook">MacBook</form:option>
-                                                    <form:option value="Dell">Dell</form:option>
-                                                    <form:option value="ASUS">ASUS</form:option>
-                                                    <form:option value="LeNoVo">LeNoVo</form:option>
+                                                <label class="form-label">Category:</label>
+                                                <form:select class="form-select" path="category.id">         
+                                                    <c:forEach var="category" items="${categories}">
+                                                        <form:option value="${category.id}" > ${category.name} </form:option>
+                                                    </c:forEach>
                                                 </form:select>
                                             </div>
-
+            
                                             <div class="mb-3 col-12 col-md-6">
                                                 <label class="form-label">Target:</label>
                                                 <form:select class="form-select" path="target">

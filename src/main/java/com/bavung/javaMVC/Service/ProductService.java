@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bavung.javaMVC.Entities.Cart;
 import com.bavung.javaMVC.Entities.CartDetail;
+import com.bavung.javaMVC.Entities.Category;
 import com.bavung.javaMVC.Entities.Product;
 import com.bavung.javaMVC.Entities.User;
 import com.bavung.javaMVC.Repository.CartDetailRepository;
@@ -50,13 +51,13 @@ public class ProductService {
         this.productRepo.delete(product);
     }
 
-    public List<String> getALLFactory()
+    // public List<String> getALLFactory()
+    // {
+    //     return this.productRepo.findAllDistinctFactory();
+    // }
+    public List<Product> getProductByCateGory(Category category)
     {
-        return this.productRepo.findAllDistinctFactory();
-    }
-    public List<Product> getProductsByFactory(String factory)
-    {
-        return this.productRepo.findByFactory(factory);
+        return this.productRepo.findByCategory(category);
     }
 
     public void handleAddProductToCart(String email , Long productId , HttpServletRequest request)

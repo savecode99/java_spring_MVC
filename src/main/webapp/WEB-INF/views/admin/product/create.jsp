@@ -88,12 +88,12 @@
                                                 </div>
 
                                                 <div class="mb-3 col-12 col-md-6">
-                                                    <label class="form-label">Factory:</label>
-                                                    <form:select class="form-select" path="factory">
-                                                        <form:option value="MacBook">MacBook</form:option>
-                                                        <form:option value="Dell">Dell</form:option>
-                                                        <form:option value="ASUS">ASUS</form:option>
-                                                        <form:option value="LeNoVo">LeNoVo</form:option>
+                                                    <label class="form-label">Category:</label>
+                                                    <form:select class="form-select" path="category.id">
+                                    
+                                                        <c:forEach var="category" items="${categories}">
+                                                            <form:option value="${category.id}" > ${category.name} </form:option>
+                                                        </c:forEach>
                                                     </form:select>
                                                 </div>
 
@@ -111,7 +111,7 @@
                                                     <label for="imageProduct" class="form-label">image:</label>
                                                     <input class="form-control" type="file" id="imageProduct"
                                                         accept=".png, .jpg, .jpeg"
-                                                        name ="file"/>  <!-- cùng bên be -->
+                                                        name ="file"/> 
                                                        
                                                 </div>
 

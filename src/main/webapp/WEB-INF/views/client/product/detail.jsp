@@ -82,7 +82,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <h4 class="fw-bold mb-3">${product.name}</h4>
-                                <p class="mb-3">${product.factory}</p>
+                                <p class="mb-3">${product.category.name}</p>
                                 <h5 class="fw-bold mb-3">
                                     <fmt:formatNumber type="number" value="${product.price}"/>đ
                                 </h5>
@@ -116,10 +116,7 @@
                                     value="${_csrf.token}"/>
 
                                 </form>
-                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
-                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> 
-                                    Add to cart
-                                </a>
+                                
                             </div>
                             <div class="col-lg-12">
                                 <nav>

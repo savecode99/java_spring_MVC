@@ -109,8 +109,8 @@
                                     </a>
                                     <!-- Nội dung menu -->
                                     <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="dropdownMenuLink">
-                                        <c:forEach var="factory" items="${listFac}" >
-                                            <li><a class="dropdown-item" href="/filterByFactory?factory=${factory}">${factory}</a></li>
+                                        <c:forEach var="category" items="${categories}" >
+                                            <li><a class="dropdown-item" href="/filterByCategory?category=${category.name}">${category.name}</a></li>
                                         </c:forEach>
                                     </ul>
 

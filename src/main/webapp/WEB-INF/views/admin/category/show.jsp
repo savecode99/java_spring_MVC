@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Welcome my shop</title>
+        <title>Welcome back</title>
         <link href="/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -26,9 +27,9 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Manage Products</h1>
+                        <h1 class="mt-4">Dashboard</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active"></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                         <div>
                             <div class = "">
@@ -36,40 +37,26 @@
                                         <div class = "col-12 mx-auto">
                         
                                             <div class="d-flex justify-content-between">
-                                                <h3>Table Product</h3>
-                                                <a href="/admin/product/create"><button class = "btn btn-primary">Add New Product</button></a>
+                                                <h3>Table Category</h3>
+                                                <a href="/admin/category/create"><button class = "btn btn-primary">Create New Factory</button></a>
                                             </div>
                         
                                             <table class="table table-bordered " style="text-align: center;">
                                                 <thead >
                                                   <tr>
                                                     <th scope="col">ID</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Price</th>
-                                                    <th scope="col">Category</th>
-                                                    <th scope="col">Target</th>
-                                                    <th scope="col">Action</th>
+                                                    <th scope="col">Factory</th>
+                                                    <th scope="col">Description</th>
                                                   </tr>
                                                 </thead>
                         
                                                 <tbody >
-                                                    <c:forEach var="product" items="${listProduct}" >
+                                                    <c:forEach var="category" items="${categories}" >
                                                         <tr>
-                                                            <td>${product.id}</td>
-                                                            <td>${product.name}</td>
-                                                            <td><fmt:formatNumber type="number" value="${product.price}"/>đ</td>
-                                                            <td>${product.category.name}</td>
-                                                            <td>${product.target}</td>
-                                                            <td>
-                                                                <div class="">
-                                                                    <a href="/admin/product/show/${product.id}" class = "btn btn-primary" >View</a>
-                                                                    <a href="/admin/product/update/${product.id}" class = "btn btn-warning" >Update</a>
-                                                                    
-                                                                    
-                                                                </div>
-                                                                
-                                                            </td>
-                                                          </tr>
+                                                            <td>${category.id}</td>
+                                                            <td>${category.name}</td>
+                                                            <td>${category.description}</td>
+                                                        </tr>
                                                     </c:forEach>
                                                 </tbody>
                                               </table>
@@ -86,10 +73,5 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
-        <script>
-            function confirmDelete() {
-                return confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
-            }
-        </script>
     </body>
 </html>
