@@ -44,7 +44,7 @@
                             </li>
                             <li><a class="dropdown-item" href="/user/updateProfile/information">Quản lý tài khoản</a></li>
                             <li><a class="dropdown-item" href="/user/updateProfile/change-password">Thay đổi mật khẩu</a></li>
-                            <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                            <li><a class="dropdown-item" href="/user/orders">Đơn hàng</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

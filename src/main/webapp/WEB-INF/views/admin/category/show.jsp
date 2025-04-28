@@ -47,6 +47,7 @@
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Factory</th>
                                                     <th scope="col">Description</th>
+                                                    <th scope="col">Action</th>
                                                   </tr>
                                                 </thead>
                         
@@ -56,6 +57,20 @@
                                                             <td>${category.id}</td>
                                                             <td>${category.name}</td>
                                                             <td>${category.description}</td>
+                                                            <td>
+                                                                
+                                                                <a href="/admin/category/update/${category.id}" class = "btn btn-warning" >Update</a>
+
+                                                                <form action="/admin/category/delete/${category.id}" method="post" style="display:inline;">
+                                                                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+                                                                        Delete
+                                                                    </button>
+                                                                </form>
+                                                                
+                                                                
+                                                                
+                                                            </td>
                                                         </tr>
                                                     </c:forEach>
                                                 </tbody>

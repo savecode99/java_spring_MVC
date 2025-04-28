@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LearningMvcApplication<javaMVC>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.bavung.javaMVC.LearningMvcApplication",
+            "projectName": "javaMVC",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
