@@ -77,11 +77,32 @@ public class OrderService {
     public Optional<Orders> getOrderById(long id){
         return this.orderRepository.findById(id);
     }
-    public void handleCancelOrder(Orders orders){
-        if(orders.getStatusEnum() == StatusEnum.PENDING || orders.getStatusEnum() == StatusEnum.CONFIRMED ){
-            List<Order_detail> list = this.orderDetailRepository.findByOrder(orders);
-            for(Order_detail x : list) this.orderDetailRepository.delete(x);
-            this.orderRepository.delete(orders);
+    public void handleCancelOrder(Orders order){
+        if(order.getStatusEnum() == StatusEnum.PENDING || order.getStatusEnum() == StatusEnum.CONFIRMED ){
+            order.setStatusEnum(StatusEnum.CANCELED);
+            this.orderRepository.save(order);
         }
+    }
+    public void handleConfirmOrder(Orders order){
+        if(order.getStatusEnum() == StatusEnum.PENDING){
+            order.setStatusEnum(StatusEnum.CONFIRMED);
+            this.orderRepository.save(order);
+        }
+    }
+    public void handleShippingOrder(Orders order){
+        if(order.getStatusEnum() == StatusEnum.PENDING || order.getStatusEnum() == StatusEnum.CONFIRMED){
+            order.setStatusEnum(StatusEnum.SHIPPING);
+            this.orderRepository.save(order);
+        }
+    }
+    public void handleDeliveredOrder(Orders order){
+        if(order.getStatusEnum() == StatusEnum.SHIPPING){
+            order.setStatusEnum(StatusEnum.DELIVERED);
+            this.orderRepository.save(order);
+        }
+    }
+
+    public List<Orders> getOrdersByUser(User user){
+        return this.orderRepository.findByUser(user);
     }
 }

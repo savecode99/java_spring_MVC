@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.bavung.javaMVC.Entities.Category;
 import com.bavung.javaMVC.Entities.Product;
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Long>{
@@ -18,8 +18,8 @@ public interface ProductRepo extends JpaRepository<Product, Long>{
 
     void delete(Product product);
 
-    @Query("SELECT DISTINCT p.factory FROM Product p")
-    List<String> findAllDistinctFactory();
+    // @Query("SELECT DISTINCT p.factory FROM Product p")
+    // List<String> findAllDistinctFactory();
 
-    List<Product> findByFactory(String factory);
+    List<Product> findByCategory(Category category);
 }

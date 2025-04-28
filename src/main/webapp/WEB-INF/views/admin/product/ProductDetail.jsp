@@ -53,7 +53,7 @@
                                                 <li class="list-group-item">Name: ${product.name}</li>
                                                 <li class="list-group-item">Price: <fmt:formatNumber type="number" value="${product.price}"/> vnđ</li>
                                                 
-                                                <li class="list-group-item">Factory: ${product.factory}</li>
+                                                <li class="list-group-item">Category: ${product.category.name}</li>
                                                 <li class="list-group-item">Quantity: ${product.quantity}</li>
                                                 </ul>
 
@@ -78,6 +78,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../js/scripts.js"></script>
+    
     </body>
 </html>

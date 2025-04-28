@@ -7,32 +7,36 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bavung.javaMVC.Entities.Category;
 import com.bavung.javaMVC.Entities.Product;
+import com.bavung.javaMVC.Service.CategoryService;
 import com.bavung.javaMVC.Service.ProductService;
 
 
 @Controller
 public class HomePageController {
     private  ProductService productService;
-
-    public HomePageController(ProductService productService)
+    private  CategoryService categoryService;
+    public HomePageController(ProductService productService , CategoryService categoryService)
     {
         this.productService = productService;
+        this.categoryService =categoryService;
     }
     @GetMapping("/") 
     public String getHomePage(Model model){
         List<Product> items = this.productService.getAllProduct();
-        List<String> factory = this.productService.getALLFactory();
+        List<Category> categories = this.categoryService.getAllCategory();
         model.addAttribute("listPro", items);
-        model.addAttribute("listFac", factory);
+        model.addAttribute("categories", categories);
         return "client/homePage/show";
     }
-    @GetMapping("/filterByFactory")
-    public String filterByFactory(@RequestParam("factory") String factory, Model model) {
-        List<Product> items = this.productService.getProductsByFactory(factory); 
-        List<String> factoryList = this.productService.getALLFactory();
+    @GetMapping("/filterByCategory")
+    public String filterByFactory(@RequestParam("category") String categoryName, Model model) {
+        Category category = this.categoryService.findByName(categoryName);
+        List<Product> items = this.productService.getProductByCateGory(category); 
+        List<Category> categories = this.categoryService.getAllCategory();
         model.addAttribute("listPro", items);
-        model.addAttribute("listFac", factoryList);
+        model.addAttribute("categories", categories);
         return "client/homePage/show";
     }
     @GetMapping("/client/chat")

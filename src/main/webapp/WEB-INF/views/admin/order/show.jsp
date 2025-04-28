@@ -67,10 +67,49 @@
                                                             <td>
                                                                 <div class="">
                                                                     <a href="/admin/order/show/${Order.id}" class = "btn btn-primary" >View</a>
-                                                                    <a href="/admin/product/update/${product.id}" class = "btn btn-warning" >Update</a>
-                                                                    <a href="/admin/order/cancel/${Order.id}" class = "btn btn-danger" >Cancel</a>
+                                                                    <!-- <a href="/admin/product/update/${product.id}" class = "btn btn-warning" >Update</a> -->
+                                                                    <a class="btn btn-warning" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Update</a>
+                                                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                                        <li>
+                                                                            <form action="/admin/order/confirm/${Order.id}" method="post">
+                                                                                <button class="dropdown-item" >CONFIRMED</button>
+                                                                                <div>
+                                                                                    <input type="hidden" name="${_csrf.parameterName}" 
+                                                                                    value="${_csrf.token}"/>
+                                                                                </div>
+                                                                            </form>
+                                                                        </li>
+                                                                        <li>
+                                                                            <form action="/admin/order/shipping/${Order.id}" method="post">
+                                                                                <button class="dropdown-item" >SHIPPING</button>
+                                                                                <div>
+                                                                                    <input type="hidden" name="${_csrf.parameterName}" 
+                                                                                    value="${_csrf.token}"/>
+                                                                                </div>
+                                                                            </form>
+                                                                        </li>
+                                                                        <li>
+                                                                            <form action="/admin/order/delivered/${Order.id}" method="post">
+                                                                                <button class="dropdown-item" >DELIVERED</button>
+                                                                                <div>
+                                                                                    <input type="hidden" name="${_csrf.parameterName}" 
+                                                                                    value="${_csrf.token}"/>
+                                                                                </div>
+                                                                            </form>
+                                                                        </li>
+                                                                        
+                                                                    </ul>
+
+                                                                    <a href="/admin/order/cancel/${Order.id}" 
+                                                                        class = "btn btn-danger" 
+                                                                        onclick="return confirm('Bạn có chắc muốn hủy đơn hàng này?');">
+                                                                        Cancel
+                                                                    </a>
                                                                     
+                                                                
                                                                 </div>
+                                                                
+                                                                    
                                                                 
                                                             </td>
                                                           </tr>

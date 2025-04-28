@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bavung.javaMVC.Entities.Category;
 import com.bavung.javaMVC.Entities.Product;
+import com.bavung.javaMVC.Service.CategoryService;
 import com.bavung.javaMVC.Service.ProductService;
 import com.bavung.javaMVC.Service.UpLoadFileService;
 
@@ -27,10 +29,13 @@ public class ProductController {
    
     private ProductService productService;
     private UpLoadFileService upLoadFileService;
-    public ProductController( ProductService productService , UpLoadFileService upLoadFileService)
+    private CategoryService categoryService;
+    
+    public ProductController( ProductService productService , UpLoadFileService upLoadFileService , CategoryService categoryService)
     {
         this.productService =  productService;
         this.upLoadFileService = upLoadFileService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("admin/product")
@@ -38,6 +43,7 @@ public class ProductController {
     {
         List<Product> items = this.productService.getAllProduct();
         model.addAttribute("listProduct", items);
+
         // for(product item : items)
         // {
         //     System.err.println(item.getPrice());
@@ -46,7 +52,9 @@ public class ProductController {
     }
     @GetMapping("admin/product/create")
     public String getCreatProductPage(Model model) {
+        List<Category> categories = this.categoryService.findAll();
         model.addAttribute("product", new Product());
+        model.addAttribute("categories", categories);
         return "admin/product/create";
     }
     
@@ -93,14 +101,16 @@ public class ProductController {
     
     @GetMapping("admin/product/update/{id}")
     public String getMethodName(@PathVariable Long id , Model model) {
+        List<Category> categories = this.categoryService.findAll();
         Optional<Product> result = this.productService.getProductById(id);
         model.addAttribute("product", result.get());
+        model.addAttribute("categories", categories);
         return "/admin/product/ProductUpdate";
     }
     @PostMapping("admin/product/update")
     public String handleUpdateProduct(@ModelAttribute("product") @Valid Product pro ,
                                     BindingResult bindingResultproduct ,
-                                    @RequestParam ("file") MultipartFile file ) {
+                                    @RequestParam ("file") MultipartFile file  ) {
         Product CurrentProduct = this.productService.getProductById(pro.getId()).get();
         if(bindingResultproduct.hasErrors())
         {
@@ -112,7 +122,7 @@ public class ProductController {
             CurrentProduct.setImage(image);
         }
         CurrentProduct.setDetailDesc(pro.getDetailDesc());
-        CurrentProduct.setFactory(pro.getFactory());
+        CurrentProduct.setCategory(pro.getCategory());
         CurrentProduct.setName(pro.getName());
         CurrentProduct.setPrice(pro.getPrice());
         CurrentProduct.setQuantity(pro.getQuantity());
